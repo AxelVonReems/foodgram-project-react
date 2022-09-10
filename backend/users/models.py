@@ -12,7 +12,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
         max_length=254,
         verbose_name='email',
         help_text='Введите адрес электронной почты'
-        )
+    )
     username = models.CharField(
         unique=True,
         max_length=150,
@@ -57,7 +57,7 @@ class Following(models.Model):
         on_delete=models.CASCADE,
         related_name='follower',
         verbose_name='Подписчик',
-        )
+    )
     author = models.ForeignKey(
         CustomUser,
         on_delete=models.CASCADE,

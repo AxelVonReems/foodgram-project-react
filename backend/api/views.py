@@ -105,13 +105,9 @@ class RecipeViewSet(viewsets.ModelViewSet):
     def download_shopping_cart(self, request):
         shopping_cart = Recipe.objects.filter(
             shopping_cart__user=request.user
-        ).order_by(
-                'ingredients__name'
-            ).values(
-                'ingredients__name', 'ingredients__measurement_unit'
-            ).annotate(
-                total_quantity=Sum('amounts__amount')
-            )
+        ).order_by('ingredients__name').values(
+            'ingredients__name', 'ingredients__measurement_unit'
+        ).annotate(total_quantity=Sum('amounts__amount'))
 
         response = HttpResponse(content_type='txt/csv')
         response['Content-Disposition'] = (
