@@ -10,7 +10,7 @@ services:
       - ./.env
 
   web:
-    build: ../backend/
+    build: axelvonreems/foodgram_backend:v1
     restart: always
     volumes:
       - static_value:/app/static/
@@ -22,7 +22,7 @@ services:
 
   frontend:
     build:
-      context: ../frontend/
+      context: axelvonreems/foodgram_frontend:v1
       dockerfile: Dockerfile
     volumes:
       - ../frontend/:/app/result_build/
