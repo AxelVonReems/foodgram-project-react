@@ -20,6 +20,12 @@ class IngredientAdmin(admin.ModelAdmin):
     empty_value_display = '-пусто-'
 
 
+class RecipeIngredientInline(admin.TabularInline):
+    model = Recipe.ingredients.through
+    min_num = 1
+    extra = 0
+
+
 class RecipeAdmin(admin.ModelAdmin):
     list_display = (
         'id',
@@ -38,13 +44,13 @@ class RecipeAdmin(admin.ModelAdmin):
         'name',
         'tags',
     )
+    inlines = (RecipeIngredientInline,)
     empty_value_display = '-пусто-'
 
 
 class IngredientAmountAdmin(admin.ModelAdmin):
     list_display = (
         'id',
-        'name',
         'recipe',
         'ingredient',
         'amount',

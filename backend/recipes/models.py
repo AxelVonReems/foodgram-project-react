@@ -76,6 +76,13 @@ class Recipe(models.Model):
         auto_now_add=True,
         verbose_name='Дата публикации',
     )
+    slug = models.SlugField(
+        unique=True,
+        blank=True,
+        null=True,
+        verbose_name='Ссылка',
+        help_text='Введите ссылку',
+    )
 
     class Meta:
         ordering = ('-pub_date',)

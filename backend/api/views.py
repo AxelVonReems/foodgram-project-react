@@ -9,7 +9,7 @@ from rest_framework.decorators import action
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 
-from api.filters import RecipeFilter, IngredientFilter
+from api.filters import IngredientFilter, RecipeFilter
 from api.permissions import IsOwnerOrReadOnly
 from api.serializers import (
     FavoriteSerializer,

@@ -111,6 +111,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'users.CustomUser'
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
 DJOSER = {
     'LOGIN_FIELD': 'email',
     'HIDE_USERS': False,
