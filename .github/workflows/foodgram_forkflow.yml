@@ -47,12 +47,12 @@ jobs:
             file: ./backend/Dockerfile
             push: true
             tags: axelvonreems/foodgram_backend:v1
-        - name: Push frontend to Docker Hub
-          uses: docker/build-push-action@v2
-          with:
-            context: ./frontend/
-            push: true
-            tags: axelvonreems/foodgram_frontend:v1
+        # - name: Push frontend to Docker Hub
+        #   uses: docker/build-push-action@v2
+        #   with:
+        #     context: ./frontend/
+        #     push: true
+        #     tags: axelvonreems/foodgram_frontend:v1
 
   deploy:
     name: Deploy to server
