@@ -9,8 +9,8 @@ services:
     env_file:
       - ./.env
 
-  web:
-    build: axelvonreems/foodgram_backend:v1
+  backend:
+    image: axelvonreems/foodgram_backend:v1
     restart: always
     volumes:
       - static_value:/app/static/
@@ -21,26 +21,24 @@ services:
       - ./.env
 
   frontend:
-    build:
-      context: axelvonreems/foodgram_frontend:v1
-      dockerfile: Dockerfile
+    image: axelvonreems/foodgram_frontend:v1
     volumes:
       - ../frontend/:/app/result_build/
     depends_on:
-      - web
+      - backend
 
   nginx:
     image: nginx:1.21.3-alpine
     ports:
       - "80:80"
     volumes:
-      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - ./default.conf:/etc/nginx/conf.d/default.conf
       - ../frontend/build:/usr/share/nginx/html/
       - static_value:/var/html/static/
       - media_value:/var/html/media/
     depends_on:
       - frontend
-      - web
+      - backend
 
 volumes:
   postgres_data:
